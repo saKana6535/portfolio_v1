@@ -28,7 +28,7 @@ export function Header() {
           {/* ロゴ */}
           <div className="flex-shrink-0">
             <h1 className="text-xl font-bold text-foreground">
-              あなたの名前
+              Soki Kokado
             </h1>
           </div>
 
@@ -52,7 +52,7 @@ export function Header() {
           <div className="flex items-center space-x-4">
             {/* GitHub */}
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/saKana6535"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
@@ -63,7 +63,7 @@ export function Header() {
 
             {/* メール */}
             <a
-              href="mailto:your.email@example.com"
+              href="k.souki1101@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="Email"
             >

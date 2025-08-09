@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - あなたの名前",
+  title: "Portfolio - Soki Kokado",
   description: "エンジニアのポートフォリオサイト - 経歴、スキル、プロジェクトをご紹介します",
 };
 

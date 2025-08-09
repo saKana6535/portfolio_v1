@@ -10,14 +10,14 @@ export function Footer() {
           {/* 著作権 */}
           <div className="text-center md:text-left">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} あなたの名前. All rights reserved.
+              © {currentYear} Soki Kokado. All rights reserved.
             </p>
           </div>
 
           {/* 外部リンク */}
           <div className="flex items-center space-x-6">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/saKana6535"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center space-x-2"
@@ -28,7 +28,7 @@ export function Footer() {
             </a>
 
             <a
-              href="mailto:your.email@example.com"
+              href="k.souki1101@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center space-x-2"
               aria-label="Email"
             >
@@ -36,13 +36,6 @@ export function Footer() {
               <span className="text-sm">Contact</span>
             </a>
           </div>
-        </div>
-
-        {/* 追加メッセージ */}
-        <div className="mt-6 pt-6 border-t border-border text-center">
-          <p className="text-muted-foreground text-sm">
-            このサイトは Next.js と Tailwind CSS で作成されています
-          </p>
         </div>
       </div>
     </footer>
