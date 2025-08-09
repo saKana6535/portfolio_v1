@@ -91,7 +91,7 @@ export function Header() {
           <div className="flex items-center space-x-4">
             {/* GitHub */}
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/saKana6535"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"

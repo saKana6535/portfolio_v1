@@ -57,7 +57,7 @@ export default function Home() {
               お問い合わせ
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              ご質問やお仕事のご依頼など、お気軽にお問い合わせください。
+              ご質問など、お気軽にお問い合わせください。
             </p>
             <a
               href="mailto:k.souki1101@gmail.com"
