@@ -1,4 +1,116 @@
+interface Experience {
+  period: {
+    start: string
+    end: string | null // nullの場合は「現在」
+  }
+  title: string
+  subtitle?: string
+  description?: string
+  tags?: string[]
+}
+
+interface ExperienceItemProps {
+  experience: Experience
+}
+
+function ExperienceItem({ experience }: ExperienceItemProps) {
+  const formatPeriod = () => {
+    const end = experience.period.end || '現在'
+    return `${experience.period.start} 〜 ${end}`
+  }
+
+  return (
+    <div className="relative">
+      {/* タイムライン円 */}
+      <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-md" style={{top: '20px'}}></div>
+      
+      <div className="ml-20">
+        {/* 統合されたコンテンツタイル */}
+        <div className="bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+          {/* ヘッダー部分（期間表示） */}
+          <div className="bg-primary text-primary-foreground px-6 py-3">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+              <span className="font-bold text-sm">{formatPeriod()}</span>
+            </div>
+          </div>
+          
+          {/* コンテンツ部分 */}
+          <div className="p-6">
+            <div className="mb-4">
+              <h4 className="text-xl font-semibold text-foreground">
+                {experience.title}
+              </h4>
+              {experience.subtitle && (
+                <span className="text-sm text-muted-foreground">
+                  {experience.subtitle}
+                </span>
+              )}
+            </div>
+            <div className="space-y-3">
+              <p className="text-muted-foreground leading-relaxed">
+                {experience.description}
+              </p>
+              {experience.tags && experience.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {experience.tags.map((tag, index) => (
+                    <span key={index} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function About() {
+  // 経歴データ（新しい経歴を追加するにはここに追加）
+  const experiences: Experience[] = [
+    {
+      period: {
+        start: '2022.04',
+        end: null // 現在
+      },
+      title: '大阪公立大学 工学部 情報工学科',
+      description: '情報工学やプログラミングの基礎について学んだ。',
+      tags: ['C++', 'Python'],
+    },
+    {
+      period: {
+        start: '2024.10',
+        end: null // 現在
+      },
+      title: '拡張知能研究グループ',
+      description: 'アピアランスベースアイトラッキング技術についての研究を行っています。具体的に、アイトラッキングシステムのインターフェース開発やモデルの構築、ファインチューニングによる視線推定精度向上に取り組んでいます。',
+      tags: ['Swift', 'Python', 'CoreML', '機械学習', 'アイトラッキング'],
+    },
+    {
+      period: {
+        start: '2025.03',
+        end: null //現在
+      },
+      title: '株式会社Affectify',
+      subtitle: 'ソフトウェアエンジニア',
+      description: 'アルバイトにて、主にWebアプリのフロントエンド開発を行なっている。',
+      tags: ['TypeScript', 'Next.js', 'React'],
+    },
+    // 新しい経歴を追加する場合はここに追加
+    // タグなしの経歴例：
+    // {
+    //   period: {
+    //     start: '2024.01',
+    //     end: '2024.03'
+    //   },
+    //   title: '経歴タイトル',
+    //   description: '詳細説明...',
+    //   // tags は省略可能
+    // }
+  ]
+
   return (
     <section id="about" className="py-20 bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,9 +126,9 @@ export function About() {
         <div className="mb-16">
           <div className="bg-card border border-border rounded-lg p-8 shadow-sm">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              エンジニアリングに対する情熱を持ち、技術を通じて価値のあるソリューションを創造することに喜びを感じています。
-              常に新しい技術に挑戦し、学び続けることで、より良いプロダクトづくりに貢献したいと考えています。
-              チームワークを大切にし、協力しながら課題解決に取り組むことを得意としています。
+              2002年11月生まれ<br />
+              出身: 福井県<br />
+              趣味: ゲーム、サッカー、バドミントン
             </p>
           </div>
         </div>
@@ -32,84 +144,9 @@ export function About() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
             
             <div className="space-y-12">
-              {/* 学歴 */}
-              <div className="relative">
-                <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-md"></div>
-                <div className="ml-20">
-                  <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h4 className="text-xl font-semibold text-foreground">
-                        [大学名] [学部] [学科]
-                      </h4>
-                      <span className="text-sm text-muted-foreground md:text-base">
-                        [在学期間]
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      <h5 className="text-lg font-medium text-foreground">
-                        研究内容: アピアランスベースアイトラッキング
-                      </h5>
-                      <p className="text-muted-foreground leading-relaxed">
-                        アピアランスベースアイトラッキング技術の研究に従事しました。
-                        従来の手法の課題を解決するため、機械学習を活用した新しいアプローチを提案し、
-                        Python、OpenCV、TensorFlowを使用して実装を行いました。
-                        研究成果は学会での発表や論文投稿を通じて発信し、
-                        実用的なアプリケーションへの応用可能性を実証しました。
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          Python
-                        </span>
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          OpenCV
-                        </span>
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          TensorFlow
-                        </span>
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          機械学習
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 職歴（サンプル） */}
-              <div className="relative">
-                <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-md"></div>
-                <div className="ml-20">
-                  <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h4 className="text-xl font-semibold text-foreground">
-                        [企業名・インターンシップ]
-                      </h4>
-                      <span className="text-sm text-muted-foreground md:text-base">
-                        [役職] | [期間]
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      <p className="text-muted-foreground leading-relaxed">
-                        インターンシップにて実際の開発プロジェクトに参加し、
-                        Webアプリケーションの開発に従事しました。
-                        チーム開発の中でGitを使用したバージョン管理、
-                        コードレビューの重要性を学び、実践的なスキルを身につけました。
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          TypeScript
-                        </span>
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          React
-                        </span>
-                        <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm">
-                          Git
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {experiences.map((experience, index) => (
+                <ExperienceItem key={index} experience={experience} />
+              ))}
             </div>
           </div>
         </div>
