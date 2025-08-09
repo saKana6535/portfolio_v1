@@ -17,22 +17,20 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="pt-20 pb-16">
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Hello, I&apos;m{' '}
+                {/* Hello, I'm{' '} */}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  あなたの名前
+                  Soki Kokado
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-                エンジニア・研究者・技術愛好家
+                Software Engineer
               </p>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-                アピアランスベースアイトラッキングの研究から始まり、
-                Web開発、モバイルアプリ開発まで幅広い技術領域に取り組んでいます。
-                新しい技術で価値のあるソリューションを創造することに情熱を注いでいます。
+                2025年現在、大阪公立大学 工学部 情報科学科 4年生<br />
               </p>
               
               {/* CTAボタン */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <button
                   onClick={() => {
                     const element = document.getElementById('about')
@@ -42,14 +40,8 @@ export default function Home() {
                   }}
                   className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg"
                 >
-                  詳しく見る
+                  ↓詳しく見る↓
                 </button>
-                <a
-                  href="mailto:your.email@example.com"
-                  className="px-8 py-3 border border-border text-foreground rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
-                >
-                  お問い合わせ
-                </a>
               </div>
             </div>
           </div>
@@ -57,6 +49,24 @@ export default function Home() {
 
         <About />
         <Skills />
+
+        {/* お問い合わせセクション */}
+        <section className="py-20 bg-secondary/30">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+              お問い合わせ
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              ご質問やお仕事のご依頼など、お気軽にお問い合わせください。
+            </p>
+            <a
+              href="mailto:k.souki1101@gmail.com"
+              className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg"
+            >
+              メールでお問い合わせ
+            </a>
+          </div>
+        </section>
       </main>
 
       <Footer />
