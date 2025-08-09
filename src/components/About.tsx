@@ -47,9 +47,11 @@ function ExperienceItem({ experience }: ExperienceItemProps) {
               )}
             </div>
             <div className="space-y-3">
-              <p className="text-muted-foreground leading-relaxed">
-                {experience.description}
-              </p>
+              {experience.description && (
+                <p className="text-muted-foreground leading-relaxed">
+                  {experience.description}
+                </p>
+              )}
               {experience.tags && experience.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {experience.tags.map((tag, index) => (
@@ -63,6 +65,19 @@ function ExperienceItem({ experience }: ExperienceItemProps) {
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+// 自己紹介の内容を設定する関数
+function IntroductionContent() {
+  return (
+    <div className="text-center">
+      <p className="text-muted-foreground leading-relaxed">
+        2002年11月生まれ<br />
+        出身: 福井県<br />
+        趣味: カラオケ、サウナ
+      </p>
     </div>
   )
 }
@@ -85,7 +100,7 @@ export function About() {
         end: null // 現在
       },
       title: '拡張知能研究グループ',
-      description: 'アピアランスベースアイトラッキング技術についての研究を行っています。具体的に、アイトラッキングシステムのインターフェース開発やモデルの構築、ファインチューニングによる視線推定精度向上に取り組んでいます。',
+      description: 'アピアランスベースアイトラッキング技術についての研究を行っています。主に、アイトラッキングシステムのインターフェース開発やモデルの構築、ファインチューニングによる視線推定精度向上に取り組んでいます。',
       tags: ['Swift', 'Python', 'CoreML', '機械学習', 'アイトラッキング'],
     },
     {
@@ -122,15 +137,13 @@ export function About() {
           <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        {/* 自己紹介 */}
+        {/* 自己紹介セクション */}
         <div className="mb-16">
-          <div className="bg-card border border-border rounded-lg p-8 shadow-sm">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              2002年11月生まれ<br />
-              出身: 福井県<br />
-              趣味: ゲーム、サッカー、バドミントン
-            </p>
-          </div>
+          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">
+            自己紹介
+          </h3>
+          
+          <IntroductionContent />
         </div>
 
         {/* 経歴タイムライン */}
