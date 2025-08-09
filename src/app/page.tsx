@@ -13,11 +13,14 @@ export default function Home() {
       {/* メインコンテンツ */}
       <main>
         {/* ヒーローセクション */}
-        <section className="pt-16 pb-20 bg-background">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="relative pt-16 pb-20 overflow-hidden">
+          {/* 背景グラデーション */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20"></div>
+
+          {/* コンテンツ */}
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="pt-20 pb-16">
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                {/* Hello, I'm{' '} */}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Soki Kokado
                 </span>
@@ -26,23 +29,21 @@ export default function Home() {
                 Software Engineer
               </p>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-                2025年現在、大阪公立大学 工学部 情報科学科 4年生<br />
+                2025年現在、大阪公立大学 工学部 情報工学科 4年生<br />
               </p>
               
               {/* CTAボタン */}
-              <div className="flex justify-center">
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('about')
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                  className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg"
-                >
-                  ↓詳しく見る↓
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  const element = document.getElementById('about')
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                ↓詳しく見る↓
+              </button>
             </div>
           </div>
         </section>
