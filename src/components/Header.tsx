@@ -6,10 +6,42 @@ import { FaGithub, FaSun, FaMoon } from 'react-icons/fa'
 
 export function Header() {
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['about', 'skills']
+      const scrollPosition = window.scrollY + 100 // ヘッダーの高さを考慮
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const elementTop = window.scrollY + rect.top
+          const elementBottom = elementTop + rect.height
+
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+
+      // ページの一番上にいる場合は何も選択しない
+      if (window.scrollY < 100) {
+        setActiveSection('')
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // 初期状態をチェック
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToSection = (sectionId: string) => {
@@ -29,15 +61,29 @@ export function Header() {
           <nav className="flex space-x-8">
             <button
               onClick={() => scrollToSection('about')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className={`relative transition-colors duration-200 ${
+                activeSection === 'about'
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               About Me
+              {activeSection === 'about' && (
+                <div className="absolute bottom-[-4px] left-0 right-0 h-0.5 bg-primary rounded-full" />
+              )}
             </button>
             <button
               onClick={() => scrollToSection('skills')}
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className={`relative transition-colors duration-200 ${
+                activeSection === 'skills'
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
               Skills
+              {activeSection === 'skills' && (
+                <div className="absolute bottom-[-4px] left-0 right-0 h-0.5 bg-primary rounded-full" />
+              )}
             </button>
           </nav>
 
