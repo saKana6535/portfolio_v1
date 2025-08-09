@@ -5,10 +5,6 @@ import {
   SiCplusplus,
   SiReact,
   SiNextdotjs,
-  SiGit,
-  SiTailwindcss,
-  SiOpencv,
-  SiTensorflow
 } from 'react-icons/si'
 
 interface Skill {
@@ -22,8 +18,8 @@ export function Skills() {
     { name: 'Swift', icon: <SiSwift className="text-orange-500" size={32} /> },
     { name: 'C++', icon: <SiCplusplus className="text-purple-600" size={32} /> },
     { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" size={32} /> },
-    { name: 'React', icon: <SiReact className="text-cyan-500" size={32} /> },
     { name: 'Next.js', icon: <SiNextdotjs className="text-black dark:text-white" size={32} /> },
+    { name: 'React', icon: <SiReact className="text-cyan-500" size={32} /> },
   ]
 
   return (
